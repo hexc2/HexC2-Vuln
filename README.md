@@ -13,9 +13,9 @@ HexC2 靶场平台用到的漏洞环境源码集合。
 
 ## 环境列表
 
-| 环境 | 漏洞 | 类型 | 端口 | 在线体验 |
+| 环境 | 漏洞 | 类型 | 端口 | 在线 |
 |---|---|---|---|---|
-| [OpenSSH musl 密码认证绕过（QVD-2026-104595）](<OpenSSH musl 密码认证绕过（QVD-2026-104595）/>) | OpenSSH + musl 密码认证绕过 | 认证绕过 → root | 22 / 80 | [进入 ↗](https://hexc2.com/laboratory/targets/118) |
+| [OpenSSH musl 密码认证绕过（QVD-2026-104595）](<OpenSSH musl 密码认证绕过（QVD-2026-104595）/>) | OpenSSH + musl 密码认证绕过 | 认证绕过 → root | 22,80 | [进入 ↗](https://hexc2.com/laboratory/targets/118) |
 
 > 命名规则：目录名 = `漏洞名称（漏洞编号）`，例如 `OpenSSH musl 密码认证绕过（QVD-2026-104595）`。
 
