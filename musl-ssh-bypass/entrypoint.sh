@@ -1,8 +1,5 @@
 #!/bin/sh
-# 容器入口：写 flag 后前台运行 sshd
-# 平台部署时会注入 LAB_FLAG（动态 flag），本地运行时用镜像内置的静态 flag
-set -e
-
+# 平台若注入 LAB_FLAG（动态 flag），以它为准；否则用镜像内置的静态 flag
 if [ -n "$LAB_FLAG" ]; then
     printf '%s\n' "$LAB_FLAG" > /root/flag.txt
 else
@@ -10,5 +7,9 @@ else
 fi
 chmod 600 /root/flag.txt
 
-mkdir -p /run/sshd
+mkdir -p /run/sshd /run/nginx
+
+# 80：官网（信息收集入口）；22：sshd（真正的攻击面）
+nginx
+
 exec /usr/sbin/sshd -D -e

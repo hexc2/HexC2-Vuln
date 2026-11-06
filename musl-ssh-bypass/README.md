@@ -43,6 +43,7 @@ OpenSSH 在 **musl libc + 未启用 PAM** 环境下，`/etc/shadow` 密码字段
 | root | shadow 密码字段 `*`，`PermitRootLogin yes` |
 | seed | 持有真实 `$6$` 哈希（口令 `Seed@2026`），用来“借盐” |
 | flag | `/root/flag.txt`，默认 `flag{musl_crypt_r3turns_st4r}` |
+| 端口 | **80** 静态官网（HEXC2LABS，信息收集入口）；**22** sshd（攻击面） |
 
 镜像里刻意保留 `seed` 账户：它既是学员的立足点（确认系统是 musl、看 sshd 版本），
 也是漏洞成立的必要条件之一。
@@ -68,8 +69,18 @@ docker build -f Dockerfile.offline -t hexc2/musl-ssh-bypass:1.0 .
 ## 启动
 
 ```bash
-docker run -d --name musl-ssh-bypass -p 2222:22 hexc2/musl-ssh-bypass:1.0
+docker run -d --name musl-ssh-bypass \
+  -p 127.0.0.1:8080:80 \
+  -p 127.0.0.1:2222:22 \
+  hexc2/musl-ssh-bypass:1.0
 ```
+
+容器里跑两个服务：
+
+- **80** — nginx 托管的 HEXC2LABS 官网，纯静态页，给学员当信息收集入口
+- **22** — sshd，真正的攻击面
+
+浏览器先开 `http://127.0.0.1:8080/` 看页面，再用 `./verify.sh` 打 22。
 
 或：
 
