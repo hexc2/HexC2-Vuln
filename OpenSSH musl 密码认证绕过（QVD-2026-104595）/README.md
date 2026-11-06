@@ -1,4 +1,4 @@
-# musl-ssh-bypass
+# OpenSSH musl 密码认证绕过（QVD-2026-104595）
 
 > **在线靶场**：[hexc2.com/laboratory/targets/118](https://hexc2.com/laboratory/targets/118)
 > 登录后启动实例，VPN 接入即可访问 80 端口官网与 22 端口 SSH。

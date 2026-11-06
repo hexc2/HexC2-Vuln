@@ -15,9 +15,9 @@ HexC2 靶场平台用到的漏洞环境源码集合。
 
 | 环境 | 漏洞 | 类型 | 端口 | 在线体验 |
 |---|---|---|---|---|
-| [musl-ssh-bypass](musl-ssh-bypass/) | OpenSSH + musl 密码认证绕过（QVD-2026-104595） | 认证绕过 → root | 22 / 80 | [进入 ↗](https://hexc2.com/laboratory/targets/118) |
+| [OpenSSH musl 密码认证绕过（QVD-2026-104595）](<OpenSSH musl 密码认证绕过（QVD-2026-104595）/>) | OpenSSH + musl 密码认证绕过 | 认证绕过 → root | 22 / 80 | [进入 ↗](https://hexc2.com/laboratory/targets/118) |
 
-> 编号规则：一个目录一套环境，目录名即漏洞短名。
+> 命名规则：目录名 = `漏洞名称（漏洞编号）`，例如 `OpenSSH musl 密码认证绕过（QVD-2026-104595）`。
 
 ## 通用要求
 
@@ -25,11 +25,11 @@ HexC2 靶场平台用到的漏洞环境源码集合。
 - 能访问 `cdn.openbsd.org`（构建时下载 OpenSSH 源码）
 - Linux 或 macOS；Windows 建议在 WSL2 里跑
 
-## 快速开始（以 musl-ssh-bypass 为例）
+## 快速开始（以 OpenSSH musl 密码认证绕过 为例）
 
 ```bash
 git clone https://github.com/hexc2/HexC2-Vuln.git
-cd HexC2-Vuln/musl-ssh-bypass
+cd "HexC2-Vuln/OpenSSH musl 密码认证绕过（QVD-2026-104595）"
 
 # 构建（首次会编译 OpenSSH，约 1-2 分钟）
 docker build -t hexc2/musl-ssh-bypass:1.0 .
@@ -51,12 +51,13 @@ docker compose up -d --build
 
 ```
 HexC2-Vuln/
-└── musl-ssh-bypass/
+└── OpenSSH musl 密码认证绕过（QVD-2026-104595）/
     ├── README.md           环境说明、原理、复现步骤
     ├── Dockerfile          构建定义
     ├── entrypoint.sh       容器入口：写 flag、起 sshd
     ├── docker-compose.yml  一条命令启动
-    └── verify.sh           漏洞验证脚本
+    ├── verify.sh           漏洞验证脚本
+    └── site/               80 端口的静态官网（HEXC2LABS）
 ```
 
 ## 约定
