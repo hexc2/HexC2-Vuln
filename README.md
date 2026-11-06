@@ -93,6 +93,8 @@ HexC2-Vuln/
     ├── entrypoint.sh       容器入口：写 flag、起 sshd
     ├── docker-compose.yml  一条命令启动
     ├── verify.sh           漏洞验证脚本
+    ├── exploit/
+    │   └── exp_104595.py   利用脚本
     └── site/               80 端口的静态官网（HEXC2LABS）
 ```
 
