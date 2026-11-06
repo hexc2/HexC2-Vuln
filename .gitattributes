@@ -1,0 +1,6 @@
+# 强制 LF：脚本和 Dockerfile 带 CRLF 会在 Linux 容器里直接报错
+* text=auto eol=lf
+*.sh text eol=lf
+Dockerfile* text eol=lf
+*.yml text eol=lf
+*.md text eol=lf

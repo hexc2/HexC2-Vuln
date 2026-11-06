@@ -1,0 +1,9 @@
+services:
+  musl-ssh-bypass:
+    build: .
+    image: hexc2/musl-ssh-bypass:1.0
+    container_name: musl-ssh-bypass
+    ports:
+      # 只绑回环，别让 22 端口裸奔到公网
+      - "127.0.0.1:2222:22"
+    restart: unless-stopped

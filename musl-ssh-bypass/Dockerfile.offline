@@ -1,0 +1,41 @@
+# 离线构建版：先把源码包放到本目录再构建
+#   curl -LO https://cdn.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-10.5p1.tar.gz
+#   docker build -f Dockerfile.offline -t hexc2/musl-ssh-bypass:1.0 .
+FROM alpine:3.22
+
+ARG OPENSSH_VER=10.5p1
+
+RUN apk add --no-cache build-base zlib-dev openssl-dev linux-headers
+
+COPY openssh-10.5p1.tar.gz /tmp/openssh.tar.gz
+
+RUN set -eux; \
+    cd /tmp; \
+    tar xzf openssh.tar.gz; \
+    cd "openssh-${OPENSSH_VER}"; \
+    ./configure \
+      --prefix=/usr \
+      --sysconfdir=/etc/ssh \
+      --with-privsep-path=/var/empty \
+      --without-pam \
+      --with-ssl-dir=/usr; \
+    make -j"$(nproc)" > /dev/null; \
+    make install; \
+    cp sshd_config /etc/ssh/sshd_config; \
+    cd /; rm -rf /tmp/openssh*; \
+    ssh-keygen -A
+
+RUN set -eux; \
+    adduser -D -s /bin/sh seed; \
+    echo 'seed:Seed@2026' | chpasswd; \
+    echo 'root:Root@2026' | chpasswd; \
+    sed -i 's/^root:[^:]*:/root:*:/' /etc/shadow; \
+    sed -i 's/^#*PasswordAuthentication.*/PasswordAuthentication yes/' /etc/ssh/sshd_config; \
+    sed -i 's/^#*PermitRootLogin.*/PermitRootLogin yes/' /etc/ssh/sshd_config; \
+    mkdir -p /run/sshd
+
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+EXPOSE 22
+ENTRYPOINT ["/entrypoint.sh"]
