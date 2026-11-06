@@ -1,5 +1,8 @@
 # musl-ssh-bypass
 
+> **在线靶场**：[hexc2.com/laboratory/targets/118](https://hexc2.com/laboratory/targets/118)
+> 登录后启动实例，VPN 接入即可访问 80 端口官网与 22 端口 SSH。
+
 OpenSSH 在 **musl libc + 未启用 PAM** 环境下，`/etc/shadow` 密码字段为 `*` 的账户
 可被 257–1024 字节的任意密码登录。
 
