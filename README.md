@@ -22,13 +22,13 @@ HexC2 靶场平台用到的漏洞环境源码集合。
       <br /><sub><b>首页</b> · 靶场入口与最近上新</sub>
     </td>
     <td align="center" width="50%">
-      <a href="https://hexc2.com/login"><img src="docs/screenshots/02-login.jpg" width="100%" alt="登录" /></a>
+      <a href="https://hexc2.com/login"><img src="docs/screenshots/02-login-form.jpg" width="100%" alt="登录" /></a>
       <br /><sub><b>登录</b> · 账号或邮箱</sub>
     </td>
   </tr>
   <tr>
     <td align="center" width="50%">
-      <a href="https://hexc2.com/register"><img src="docs/screenshots/03-register.jpg" width="100%" alt="注册" /></a>
+      <a href="https://hexc2.com/register"><img src="docs/screenshots/03-register-form.jpg" width="100%" alt="注册" /></a>
       <br /><sub><b>注册</b> · 邮箱验证</sub>
     </td>
     <td align="center" width="50%">
