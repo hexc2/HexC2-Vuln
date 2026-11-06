@@ -42,6 +42,7 @@ HexC2 靶场平台用到的漏洞环境源码集合。
 
 | 环境 | 漏洞 | 类型 | 端口 | 在线 |
 |---|---|---|---|---|
+| [php-rce（CVE-2026-109619）](<php-rce（CVE-2026-109619）/>) | PHP mod_php 解析 multipart 时内存破坏 | 预认证 RCE 原语 | 80 | [进入 ↗](https://hexc2.com/laboratory/targets/30) |
 | [musl-ssh-bypass（QVD-2026-104595）](<musl-ssh-bypass（QVD-2026-104595）/>) | OpenSSH + musl 密码认证绕过 | 认证绕过 → root | 22,80 | [进入 ↗](https://hexc2.com/laboratory/targets/118) |
 
 > 命名规则：目录名 = `英文短名（漏洞编号）`，例如 `musl-ssh-bypass（QVD-2026-104595）`。
@@ -78,6 +79,14 @@ docker compose up -d --build
 
 ```
 HexC2-Vuln/
+├── php-rce（CVE-2026-109619）/
+│   ├── README.md           环境说明、构建、验证
+│   ├── Dockerfile
+│   ├── entrypoint.sh
+│   ├── www/                站点源码
+│   ├── exploit/            PoC 与利用骨架
+│   ├── report.md           完整技术分析
+│   └── shots/              报告配图
 └── musl-ssh-bypass（QVD-2026-104595）/
     ├── README.md           环境说明、原理、复现步骤
     ├── Dockerfile          构建定义
