@@ -11,6 +11,33 @@ HexC2 靶场平台用到的漏洞环境源码集合。
 只能在你自己的机器、自己的隔离网络或获得书面授权的目标上运行。
 把它们暴露到公网等于自己交出主机，别这么干。
 
+## 平台截图
+
+在线地址：**<https://hexc2.com>**
+
+<table>
+  <tr>
+    <td align="center" width="50%">
+      <a href="https://hexc2.com/"><img src="docs/screenshots/01-home.jpg" width="100%" alt="首页" /></a>
+      <br /><sub><b>首页</b> · 靶场入口与最近上新</sub>
+    </td>
+    <td align="center" width="50%">
+      <a href="https://hexc2.com/login"><img src="docs/screenshots/02-login.jpg" width="100%" alt="登录" /></a>
+      <br /><sub><b>登录</b> · 账号或邮箱</sub>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" width="50%">
+      <a href="https://hexc2.com/register"><img src="docs/screenshots/03-register.jpg" width="100%" alt="注册" /></a>
+      <br /><sub><b>注册</b> · 邮箱验证</sub>
+    </td>
+    <td align="center" width="50%">
+      <a href="https://hexc2.com/console"><img src="docs/screenshots/04-console.jpg" width="100%" alt="用户控制台" /></a>
+      <br /><sub><b>用户控制台</b> · 靶场进度、每日任务与排行</sub>
+    </td>
+  </tr>
+</table>
+
 ## 环境列表
 
 | 环境 | 漏洞 | 类型 | 端口 | 在线 |
