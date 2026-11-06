@@ -43,9 +43,9 @@ HexC2 靶场平台用到的漏洞环境源码集合。
 | 环境 | 漏洞 | 类型 | 端口 | 在线 |
 |---|---|---|---|---|
 | [php-rce（CVE-2026-109619）](<php-rce（CVE-2026-109619）/>) | PHP mod_php 解析 multipart 时内存破坏 | 预认证 RCE 原语 | 80 | [进入 ↗](https://hexc2.com/laboratory/targets/30) |
-| [musl-ssh-bypass（QVD-2026-104595）](<musl-ssh-bypass（QVD-2026-104595）/>) | OpenSSH + musl 密码认证绕过 | 认证绕过 → root | 22,80 | [进入 ↗](https://hexc2.com/laboratory/targets/118) |
+| [musl-ssh-bypass（CVE-2026-123158）](<musl-ssh-bypass（CVE-2026-123158）/>) | OpenSSH + musl 密码认证绕过 | 认证绕过 → root | 22,80 | [进入 ↗](https://hexc2.com/laboratory/targets/118) |
 
-> 命名规则：目录名 = `英文短名（漏洞编号）`，例如 `musl-ssh-bypass（QVD-2026-104595）`。
+> 命名规则：目录名 = `英文短名（漏洞编号）`，例如 `musl-ssh-bypass（CVE-2026-123158）`。
 
 ## 通用要求
 
@@ -57,7 +57,7 @@ HexC2 靶场平台用到的漏洞环境源码集合。
 
 ```bash
 git clone https://github.com/hexc2/HexC2-Vuln.git
-cd "HexC2-Vuln/musl-ssh-bypass（QVD-2026-104595）"
+cd "HexC2-Vuln/musl-ssh-bypass（CVE-2026-123158）"
 
 # 构建（首次会编译 OpenSSH，约 1-2 分钟）
 docker build -t hexc2/musl-ssh-bypass:1.0 .
@@ -87,14 +87,14 @@ HexC2-Vuln/
 │   ├── exploit/            PoC 与利用骨架
 │   ├── report.md           完整技术分析
 │   └── shots/              报告配图
-└── musl-ssh-bypass（QVD-2026-104595）/
+└── musl-ssh-bypass（CVE-2026-123158）/
     ├── README.md           环境说明、原理、复现步骤
     ├── Dockerfile          构建定义
     ├── entrypoint.sh       容器入口：写 flag、起 sshd
     ├── docker-compose.yml  一条命令启动
     ├── verify.sh           漏洞验证脚本
     ├── exploit/
-    │   └── exp_104595.py   利用脚本
+    │   └── exp_123158.py   利用脚本
     └── site/               80 端口的静态官网（HEXC2LABS）
 ```
 
