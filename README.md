@@ -28,7 +28,7 @@ HexC2 靶场平台用到的漏洞环境源码集合。
   </tr>
   <tr>
     <td align="center" width="50%">
-      <a href="https://hexc2.com/register"><img src="docs/screenshots/03-register-form-v2.jpg" width="100%" alt="注册" /></a>
+      <a href="https://hexc2.com/register"><img src="docs/screenshots/03-register-v3.jpg" width="100%" alt="注册" /></a>
       <br /><sub><b>注册</b> · 邮箱验证</sub>
     </td>
     <td align="center" width="50%">
